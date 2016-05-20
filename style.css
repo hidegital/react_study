@@ -1,0 +1,319 @@
+/*-- ベース --*/
+
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    font-size: 62.5%;
+}
+
+body {
+    color: #333;
+    background: #efefef;
+    font-size: 1.5em;
+    font-family: 'メイリオ', Meiryo, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'ＭＳ Ｐゴシック', sans-serif;
+    line-height: 1.5;
+}
+
+body * {
+    word-break: break-all;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.wrap {
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+button {
+    padding: 0;
+}
+
+a {
+    transition: opacity 0.2s 0s linear;
+}
+
+a:hover,
+.hover {
+    opacity: 0.5!important;
+    transition: opacity 0.2s 0s linear;
+}
+
+/*-- パーツ --*/
+
+[data-account] {
+    content: "";
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    background: url() no-repeat 50% 50%;
+    background-size: cover;
+    vertical-align: middle;
+}
+
+/*-- リスト --*/
+
+#article-list > li {
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    height: 200px;
+    margin: 10px;
+    padding: 2px;
+}
+
+.tag-list {
+    margin-top: 10px;
+}
+
+.tag-list > li {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.tag-list > li  > a:link,
+.tag-list > li  > a:visited,
+.tag-list > li  > a:hover {
+    display: block;
+    height: 2.4em;
+    line-height: 2.4em;
+    padding: 0 0.5em;
+    color: #666;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    background: #fff;
+    font-size: 1.2rem;
+}
+
+.account-list {
+    letter-spacing: 0;
+}
+
+.account-list  > li {
+    margin-right: 5px;
+}
+
+.comment-list {
+    border-top: 1px dashed #ccc;
+    background: #fff;
+}
+
+.comment-list > li {
+    border-bottom: 1px dashed #ccc;
+}
+
+.comment-list [data-account] {
+    margin: 10px;
+}
+
+/*-- article --*/
+
+#article-list > li:first-child {
+    width: -webkit-calc(100% - 20px);
+    width: calc(100% - 20px);
+}
+
+article {
+    cursor: pointer;
+    overflow: hidden;
+    height: 100%;
+    border: 1px solid rgba(0,0,0,0.4);
+    border-radius: 4px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.4);
+    transition: opacity 0.2s 0s linear;
+}
+
+article.hover,
+article:hover,
+article.overlay > a:hover {
+    opacity: 0.7;
+    transition: opacity 0.2s 0s linear;
+}
+
+article.overlay:hover {
+    opacity: 1;
+}
+
+article > a:link,
+article > a:visited,
+article > a:hover {
+    pointer-events: none;
+    position: relative;
+    display: block;
+    height: 200px;
+    color: #fff;
+    background: url() no-repeat 50% 50%;
+    background-size: cover;
+    text-decoration: none;
+}
+
+article h2 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.8em;
+    background: rgba(0,0,0,0.5);
+    font-size: 2rem;
+}
+
+article h3 {
+    margin: 20px 0 10px 0;
+    font-weight: bold;
+    font-size: 1.8rem;
+}
+
+article p {
+    padding: 0 1em 1em 1em;
+    background: rgba(0,0,0,0.5);
+}
+
+/*-- articleOverlay -- */
+
+article.overlay {
+    overflow: auto;
+    cursor: default;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    margin: auto;
+    padding: 20px;
+    border-radius: 0;
+    background: #efefef;
+    box-shadow: 0 0 4px rgba(0,0,0,0.4);
+    z-index: 9999;
+}
+
+article.overlay h2,
+article.overlay p {
+    position: static;
+    height: auto;
+    padding-right: 50px;
+    text-decoration: underline;
+}
+
+article.overlay > a:link,
+article.overlay > a:visited,
+article.overlay > a:hover {
+    overflow: hidden;
+    pointer-events: auto;
+    position: relative;
+    height: auto;
+    border-radius: 4px;
+}
+
+article.overlay > a:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 0;
+    box-shadow: inset 0 4px 0 0 #fff, inset -4px 0 0 0 #fff;
+    transform: rotate(45deg);
+}
+
+article h3,
+article p,
+article .tag-list,
+article .comment-list,
+article .account-list {
+    display: none;
+}
+
+article.overlay h3,
+article.overlay p,
+article.overlay .tag-list,
+article.overlay .comment-list,
+article.overlay .account-list {
+    display: block;
+}
+
+/*-- overlay -- */
+
+#overlay {
+    cursor: pointer;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: 1000;
+}
+
+@media screen and (max-width: 640px){
+
+    .wrap,
+    article.overlay {
+        width: 90%;
+    }
+
+    #article-list > li,
+    #article-list > li:first-child {
+        width: 100%;
+    }
+
+}
+@media screen and (min-width: 641px) and (max-width: 768px){
+
+    .wrap,
+    article.overlay {
+        width: 620px;
+    }
+
+    #article-list > li  {
+        width: 270px;
+    }
+
+}@media screen and (min-width: 769px) and (max-width: 960px){
+
+    .wrap,
+    article.overlay {
+        width: 740px;
+    }
+
+    #article-list > li  {
+        width: 330px;
+    }
+
+}
+
+@media screen and (min-width: 961px) and (max-width: 1280px){
+
+    .wrap,
+    article.overlay {
+        width: 930px;
+    }
+
+    #article-list > li  {
+        width: 276px;
+    }
+
+
+}
+
+@media screen and (min-width: 1281px) {
+
+    .wrap,
+    article.overlay {
+        width: 1260px;
+    }
+
+    #article-list > li  {
+        width: 285px;
+    }
+
+}
